@@ -1,0 +1,38 @@
+.Header {
+  background-color: #fff;
+  box-shadow: none;
+  border-image-source: url(../img/header-bar.svg);
+  border-image-slice: 10;
+  border-bottom: .75em solid;
+  color: black;
+  padding: 0.5em 0;
+}
+
+.Header-navToggle {
+
+  &:focus {
+    outline: 1px solid black;
+  }
+  svg {
+    fill: $black;
+  }
+}
+
+.Header-title {
+  margin: 1em 0;
+
+  &::before {
+    content: '';
+    width: 4em;
+    height: 4em;
+    display: inline-block;
+    vertical-align: middle;
+    margin: -1.4em 1em 0 1em;
+    background: {
+      image: url(../img/mijnapp-logo.png);
+      repeat: no-repeat;
+    };
+    position: absolute;
+    right: 0;
+  }
+}

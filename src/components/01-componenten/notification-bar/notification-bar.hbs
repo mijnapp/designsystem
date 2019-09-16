@@ -1,0 +1,23 @@
+<div class="notification-bar{{#if themeClass}} {{themeClass}}{{/if}}">
+  <div class="notification-bar__header">
+    <div class="notification-bar__icon">
+      {{#if info }}
+        {{> @icon--info }}
+      {{/if}}
+      {{#if exclamation }}
+        {{> @icon--exclamation }}
+      {{/if}}
+      {{#if check}}
+        {{> @icon--check }}
+      {{/if}}
+      {{#if cross}}
+        {{> @icon--cross }}
+      {{/if}}
+    </div>
+    <div class="notification-bar__title">Lorem ipsum dolor sit amet</div>
+  </div>
+  <div class="notification-bar__body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At corporis culpa deleniti distinctio eligendi exercitationem iste repudiandae. Ab ad aperiam, dolor, eaque esse necessitatibus nobis nulla obcaecati perspiciatis quis vero!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At corporis culpa deleniti distinctio eligendi exercitationem iste repudiandae. Ab ad aperiam, dolor, eaque esse necessitatibus nobis nulla obcaecati perspiciatis quis vero!</p>
+  </div>
+</div>

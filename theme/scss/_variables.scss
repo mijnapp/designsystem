@@ -1,0 +1,59 @@
+// Colors
+$red: #ff6261;
+$black: #000;
+$white: #fff;
+
+// Font faces
+$font-sans: 'TheSans', 'Helvetica', 'Arial', sans-serif;
+$font-serif: 'TheMix', 'Georgia', serif;
+
+// Font sizes
+$base-font-size: 18; // we'll use this unit to calculate with
+$base-line-height: 1.55;
+
+$fs-up-4: 2.594em; // 46.69px
+$fs-up-3: 1.949em; // 35.08px
+$fs-up-2: 1.331em; // 23.96px
+$fs-up-1: 1.1em; // 19.8px
+$fs-base: ($base-font-size / 16) * 1em; // express base font size in ems
+$fs-down-1: 0.909em; // 16.36px
+
+// Font weights
+$fw-bold: 700;
+$fw-medium: 600;
+$fw-normal: 400;
+
+// Breakpoints
+$mobile: (480 / $base-font-size) * 1em;
+$phablet: (620 / $base-font-size) * 1em;
+$tablet-portrait: (760 / $base-font-size) * 1em;
+$tablet-landscape: (900 / $base-font-size) * 1em;
+$desktop: (1024 / $base-font-size) * 1em;
+$desktop-wide: (1280 / $base-font-size) * 1em;
+
+// Spacing units
+$space-xxs: (4 / $base-font-size) * 1rem; // 4ox
+$space-xs: $space-xxs * 2; // 8px
+$space-s: $space-xs * 2; // 16px
+$space-m: ($space-xs * 3); // 24px
+$space-l: $space-xs * 4; // 32px
+$space-xl: $space-xs * 6; // 48px
+$space-xxl: $space-xs * 7; // 56px
+$space-xxxl: $space-xs * 8; // 64px
+$space-xxxxl: $space-xs * 12; // 96px
+
+// layers
+$layer-skiplink: 1;
+$layer-popover: 2;
+$layer-modal: 3;
+
+// Styling
+$global-radius: 4 / $base-font-size;
+$global-box-shadow: 0 (2em / $base-font-size) (8em / $base-font-size) rgba(0, 0, 0, 0.15);
+
+// Border
+$border-color: $black;
+$border-width: 1px;
+$border-style: solid;
+$border-radius: #{$global-radius}rem;
+$border: $border-width $border-style $border-color;

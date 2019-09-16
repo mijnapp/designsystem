@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  web:
+    container_name: mijnappdesignsystem
+    image: node:10.16
+    ports:
+      - "3001:3001"
+    volumes:
+      - ".:/app"
+    environment:
+      TZ: "Europe/Amsterdam"
+    working_dir: "/app"
+    stdin_open: true
+    tty: true

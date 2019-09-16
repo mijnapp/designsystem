@@ -1,0 +1,188 @@
+// Component variables
+$status-indicator-default-color: $grey-dark;
+$status-indicator-mute-color: $grey-light;
+$status-indicator-done-color: $blue;
+$status-indicator-passed-color: $green;
+$status-indicator-background-color: $white;
+$status-indicator-bold: $fw-medium;
+$status-indicator-line-width: 2px;
+$status-indicator-icon-container-width: 24px;
+$status-indicator-label-icon-space: $space-xs;
+$status-indicator-x-axis-spacing: $space-l;
+$status-indicator-icon-width: 16px;
+$status-indicator-margin: 1.5px;
+$status-indicator-small-text: $fs-down-1;
+$status-indicator-first-layer: $layer-status-indicator;
+$status-indicator-second-layer: $layer-status-indicator + 1;
+$status-indicator-third-layer: $layer-status-indicator + 2;
+
+.status-indicator {
+
+  $parent: &;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__status {
+    font-weight: $fw-medium;
+  }
+
+  &__lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    #{$parent}__background,
+    #{$parent}__progress {
+      content: '';
+      position: absolute;
+      top: ($status-indicator-icon-container-width / 2) + $status-indicator-margin;
+      left: (($status-indicator-icon-container-width / 2) - ($status-indicator-line-width / 2));
+      width: $status-indicator-line-width;
+    }
+
+    #{$parent}__background {
+      background-color: $status-indicator-mute-color;
+      z-index: $status-indicator-second-layer;
+      bottom: ($status-indicator-icon-container-width / 2) + $status-indicator-margin;
+    }
+
+    #{$parent}__progress {
+      background-color: $status-indicator-passed-color;
+      z-index: $status-indicator-second-layer;
+    }
+  }
+
+  ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__content {
+    z-index: $status-indicator-second-layer;
+  }
+
+  &__title-container,
+  &__description-container {
+    padding-top: $status-indicator-x-axis-spacing;
+  }
+
+  &__title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: $status-indicator-mute-color;
+
+    #{$parent}__step:first-child & {
+      padding-top: 0;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $status-indicator-icon-container-width;
+    height: $status-indicator-icon-container-width;
+    background-color: $status-indicator-background-color;
+    border: $status-indicator-line-width solid $status-indicator-mute-color;
+    border-radius: 50%;
+
+    .icon {
+      width: $status-indicator-icon-width;
+      height: $status-indicator-icon-width;
+    }
+
+    // Status depending styles.
+    #{$parent}__done-step &,
+    #{$parent}__current-step & {
+      border-color: $status-indicator-passed-color;
+      color: $status-indicator-passed-color;
+    }
+  }
+
+  &__description {
+    margin-left: $status-indicator-label-icon-space;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    border: none;
+    margin: 0 0 0 $status-indicator-label-icon-space;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    font-family: $font-sans;
+    font-size: $fs-base;
+    line-height: $base-line-height;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+
+    &::-moz-focus-inner {
+      border: 0;
+      padding: 0;
+    }
+
+    &:focus {
+      color: $black;
+      background-color: $yellow;
+      border-color: $black;
+    }
+
+    #{$parent}__skip-step & span {
+      font-size: $fs-down-2;
+      font-weight: $fw-normal;
+      margin-left: $space-xxs;
+    }
+
+    #{$parent}__current-step &,
+    #{$parent}__done-step & {
+      color: $status-indicator-done-color;
+      text-decoration: underline;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    #{$parent}__open & {
+      color: $status-indicator-default-color;
+      font-weight: $status-indicator-bold;
+      text-decoration: none;
+
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+
+  &__description {
+    font-size: $status-indicator-small-text;
+  }
+
+  &__description-container {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+
+    #{$parent}__open & {
+      display: flex;
+    }
+  }
+
+  &__dot {
+    z-index: $status-indicator-third-layer;
+    flex-shrink: 0;
+    background-color: $status-indicator-passed-color;
+    border: $status-indicator-line-width solid $status-indicator-background-color;
+    width: ($status-indicator-icon-width - ($status-indicator-line-width * 2));
+    height: ($status-indicator-icon-width - ($status-indicator-line-width * 2));
+    border-radius: 50%;
+    margin: (($status-indicator-icon-container-width - $status-indicator-icon-width) / 2) + $status-indicator-line-width;
+  }
+}

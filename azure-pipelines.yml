@@ -1,0 +1,55 @@
+trigger:
+  branches:
+    include:
+      - master
+      - release/*
+      - develop
+      - feature/*
+
+pr: none
+
+jobs:
+  - job: basic
+    pool:
+      vmImage: ubuntu-16.04
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: "^8.15.0"
+        displayName: "Install Node.js"
+      - script: |
+          set -e
+          export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+          curl -o- -L https://yarnpkg.com/install.sh | bash
+        displayName: "Install Yarn"
+      - script: |
+          set -e
+          export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+          yarn
+        displayName: "Get dependencies"
+      - script: |
+          set -e
+          export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+          yarn build:designsystem && ls '$(System.DefaultWorkingDirectory)/build/fonts'
+        displayName: "Build design system"
+        condition: and(succeededOrFailed(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      - task: CopyFiles@2
+        inputs:
+          SourceFolder: '$(system.defaultworkingdirectory)/tmp'
+          Contents: '**/*.zip'
+          TargetFolder: '$(build.artifactstagingdirectory)'
+        displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+        condition: and(succeededOrFailed(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
+      - task: ArchiveFiles@2
+        inputs:
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/build/'
+          archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+          replaceExistingArchive: true
+          includeRootFolder: false
+        displayName: 'Archive $(System.DefaultWorkingDirectory)/build/'
+        condition: and(succeededOrFailed(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(build.artifactstagingdirectory)'
+        displayName: 'Publish Artifact: drop'
+        condition: succeededOrFailed()

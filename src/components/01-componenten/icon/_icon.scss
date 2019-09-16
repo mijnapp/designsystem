@@ -1,0 +1,9 @@
+$icon-size: 1em; // Make sure it's the same as SVG's viewbox attribute width and height.
+
+.icon {
+  width: 1em;
+  height: 1em;
+  font-size: 1em;
+  fill: currentColor;
+  padding: .1em;
+}
