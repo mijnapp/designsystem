@@ -1,0 +1,105 @@
+$notification-bar-icon-size: 20px;
+$notification-bar-icon-padding: 4px;
+$notification-bar-part-spacing: $space-s;
+
+// Theme colors
+$notification-bar-default-color: $grey;
+$notification-bar-info-color: $blue;
+
+@mixin notification-bar-theming($parent, $color: $notification-bar-default-color) {
+  background-color: rgba($color, .05);
+  border-left-color: $color;
+
+  #{$parent}__icon {
+    background-color: $color;
+  }
+}
+
+.notification-bar {
+
+  $parent: &;
+
+  display: flex;
+  flex-wrap: wrap;
+  border-left: 5px solid transparent;
+  padding: $notification-bar-part-spacing;
+
+  &__header,
+  &__body {
+    flex: 0 1 100%;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__body {
+    margin-left: calc(#{$notification-bar-icon-size} + #{$notification-bar-part-spacing});
+
+    p {
+      // Reset
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__icon {
+    width: $notification-bar-icon-size;
+    height: $notification-bar-icon-size;
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: $white;
+    padding: $notification-bar-icon-padding;
+
+    .icon {
+      padding: 0;
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex: 1 1 auto;
+    padding-left: $notification-bar-part-spacing;
+    font-weight: $fw-bold;
+  }
+
+  /**
+   * Themes
+   */
+
+  // Default
+  @include notification-bar-theming($parent);
+
+  // Info
+  &__info {
+    @include notification-bar-theming($parent, $notification-bar-info-color);
+  }
+
+  // Warning
+  &__warning {
+    @include notification-bar-theming($parent, $yellow);
+
+    #{$parent}__icon {
+      color: $grey-dark;
+    }
+  }
+
+  // Error
+  &__danger {
+    @include notification-bar-theming($parent, $red);
+  }
+
+  // Success
+  &__success {
+    @include notification-bar-theming($parent, $green);
+  }
+}

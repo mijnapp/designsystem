@@ -1,0 +1,59 @@
+.Prose {
+  font: inherit;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: $font-serif;
+    line-height: normal;
+  }
+
+  h1 {
+    font-size: $fs-up-4;
+    font-weight: $fw-normal;
+  }
+
+  h2 {
+    font-size: $fs-up-3;
+    font-weight: $fw-bold;
+    margin-top: $space-l;
+    color: $red;
+  }
+
+  h3 {
+    font-size: $fs-up-2;
+    font-weight: $fw-bold;
+  }
+
+  h4 {
+    font-size: $fs-up-1;
+    font-weight: $fw-bold;
+  }
+
+  h5 {
+    font-size: $fs-base;
+    font-weight: $fw-bold;
+  }
+
+  h2 + h3 {
+    margin-top: $space-m;
+  }
+
+  h2 + p {
+    margin-top: $space-s;
+  }
+
+  h3 + p {
+    margin-top: $space-xs;
+  }
+
+  h4 + p {
+    margin-top: 0;
+  }
+
+  table {
+    font-size: inherit;
+  }
+}

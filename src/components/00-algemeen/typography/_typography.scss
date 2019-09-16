@@ -1,0 +1,262 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 56em;
+}
+
+article,
+section,
+header,
+footer,
+main,
+aside {
+  display: block;
+}
+
+main {
+  background-color: $white;
+  padding: $space-s;
+
+  @media (min-width: $tablet-landscape) {
+    padding: $space-xxxl;
+    margin-top: $space-xxxl;
+    margin-bottom: $space-xxxl;
+  }
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+audio,
+video,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+html {
+  font-family: $font-sans;
+  font-size: $fs-base;
+  line-height: $base-line-height;
+  color: $grey-dark;
+  background-color: $white-dark;
+}
+
+p,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+audio,
+video,
+iframe,
+form {
+  margin: $space-m 0;
+}
+
+ul,
+ol {
+  padding-left: $space-s;
+}
+
+a {
+  color: $blue;
+
+  &:hover {
+    color: $brown;
+    text-decoration: none;
+  }
+
+  &:focus {
+    background-color: $yellow-light;
+    color: $blue;
+    outline: 1px solid $brown;
+    text-decoration: none;
+  }
+}
+
+div[tabindex="-1"]:focus /* in these cases we'll likely not want to
+indicate focus because they are exceptions where large areas
+benefit from being focused*/
+{
+  outline: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $font-serif;
+  line-height: normal;
+  margin-bottom: $space-m;
+}
+
+h1 {
+  font-size: $fs-up-4;
+  font-weight: $fw-normal;
+}
+
+h2 {
+  font-size: $fs-up-3;
+  font-weight: $fw-bold;
+  margin-top: $space-l;
+}
+
+h3 {
+  font-size: $fs-up-2;
+  font-weight: $fw-bold;
+}
+
+h4 {
+  font-size: $fs-up-1;
+  font-weight: $fw-bold;
+}
+
+h5 {
+  font-size: $fs-base;
+  font-weight: $fw-bold;
+}
+
+h2 + h3 {
+  margin-top: $space-m;
+}
+
+h2 + p {
+  margin-top: $space-s;
+}
+
+h3 + p {
+  margin-top: $space-xs;
+}
+
+h4 + p {
+  margin-top: 0;
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  background-color: $grey-light;
+  margin: $space-l 0;
+}
+
+label {
+  display: block;
+  margin-bottom: $space-xs;
+  font-family: $font-serif;
+  font-weight: $fw-bold;
+}
+
+fieldset {
+  border: 0;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  display: block;
+  border: 2px solid $grey-light;
+  width: 100%;
+  padding: $space-xs $space-xs;
+  font: inherit;
+  transition: border-color 0.15s ease-in-out;
+  background-color: $white;
+  color: $grey-dark;
+
+  &::placeholder {
+    color: $grey;
+  }
+
+  &:focus {
+    border-color: $black;
+  }
+
+  &[readonly],
+  &[disabled],
+  &[readonly]:hover,
+  &[disabled]:hover {
+    background-color: $white-dark;
+  }
+}
+
+select {
+  border-radius: 0;
+  appearance: none;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline-block;
+  vertical-align: baseline;
+
+  + label {
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: $space-xs;
+  }
+}
+
+input[type="submit"] {
+  font-family: $font-serif;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  max-width: 320px;
+  border: 2px solid transparent;
+  background-color: $green;
+  color: $white;
+  white-space: nowrap;
+  padding: $space-xs $space-s;
+  font-size: inherit;
+  margin: $space-m 0;
+
+  &:hover {
+    border: 2px solid $brown;
+    background-color: $brown;
+    color: $white;
+  }
+
+  &:focus {
+    color: $black;
+    background-color: $yellow;
+    border-color: $black;
+  }
+}
+
+form .error-message {
+  color: $red;
+
+  li {
+    list-style: none;
+  }
+}
+
+.hide-mobile {
+  display: none;
+
+  @media (min-width: $desktop) {
+    display: block;
+  }
+}

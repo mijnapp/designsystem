@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build folders
+build
+theme/build
+tmp
+
+# Idea configs
+.idea
+
+# Logs
+yarn-error.log
+theme/theme.css
+/static
